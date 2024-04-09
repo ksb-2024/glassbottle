@@ -1,0 +1,759 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap')
+	;
+/* 구글 폰트 api 적용 , poppins : Light300, Regular400, Medium500, Semi-bold 600*/
+
+/*사용자정의 속성값?*/
+:root {
+	--color-white: hsl(252, 30%, 100%);
+	--color-light: hsl(252, 30%, 95%);
+	--color-gray: hsl(252, 15%, 65%);
+	--color-primary: hsl(252, 75%, 60%);
+	--color-secondary: hsl(252, 100%, 90%);
+	--color-success: hsl(120, 95%, 65%);
+	--color-danger: hsl(0, 95%, 65%);
+	--color-dark: hsl(252, 30%, 17%);
+	--color-black: hsl(252, 30%, 10%);
+	--border-radius: 2rem;
+	--card-border-radius: 1rem;
+	--btn-padding: 0.6rem 2rem;
+	--search-padding: 0.6rem 1rem;
+	--card-padding: 1rem;
+	--sticky-top-left: 5.4rem;
+	--sticky-top-right: -18rem;
+}
+
+/*전체 태그에 적용*/
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	list-style: none;
+	border: none;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	color: var(--color-dark);
+	background: var(--color-light);
+	overflow-x: hidden;
+}
+
+/* GENERAL STYLES */
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.profile-photo {
+	width: 2.7rem;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+img {
+	display: block;
+	width: 100%;
+}
+/* 버튼 */
+.btn {
+	display: inline-block;
+	padding: var(--btn-padding);
+	font-weight: 500;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	transition: all 300ms ease;
+	font-size: 0.9rem;
+}
+/* 버튼 클릭시 투명도 */
+.btn:hover {
+	opacity: 0.8;
+}
+/* 버튼 배경색 보라색, 글씨 색상 흰색 */
+.btn-primary {
+	background: var(--color-primary);
+	color: white;
+}
+
+.text bold {
+	font-weight: 500;
+}
+
+.text-muted {
+	color: var(--color-gray);
+}
+
+/*=============== NAVBAR =======================*/
+nav {
+	width: 100%;
+	background: var(--color-white);
+	padding: 0.7rem 0;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+}
+
+nav .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+/* 상단 검색창 */
+.search-bar {
+	background: var(--color-light);
+	border-radius: var(--border-radius);
+	padding: var(--search-padding);
+}
+
+/* 상단 검색창 내부 텍스트창*/
+.search-bar input[type='search'] {
+	background: transparent;
+	width: 30vw;
+	margin-left: 1rem;
+	font-size: 0.9rem;
+	color: var(--color-dark);
+}
+
+/* 상단 검색창 내부 텍스트창에 써있는 글자*/
+nav .search-bar input[type='search']::placeholder {
+	color: var(--color-gray);
+}
+
+nav .create {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+/* ============================ MAIN ========================= */
+main {
+	position: relative;
+	top: 5.4rem;
+}
+
+main .container{
+    display: grid;
+    grid-template-columns: 18vw auto 20vw;
+    column-gap: 2rem;
+    position: relative;
+}
+
+/* ====================== 왼쪽 =====================*/
+main .container .left {
+	height: max-content;
+	position: sticky;
+	top: var(--sticky-top-left);
+}
+
+main .container .left .profile {
+	padding: var(--card-padding);
+	background: var(--color-white);
+	border-radius: var(--card-border-radius);
+	display: flex;
+	align-items: center;
+	column-gap: 1rem;
+	width: 100%;
+	min-width: 180px;
+}
+
+/* -------------------- 사이드바 -----------------------*/
+.left .sidebar {
+	min-width: 180px;
+	margin-top: 1rem;
+	background: var(--color-white);
+	border-radius: var(--card-border-radius);
+}
+
+.left .sidebar .menu-item {
+	display: flex;
+	align-items: center;
+	height: 4rem;
+	cursor: pointer;
+	transition: all 300ms ease;
+	position: relative;
+}
+
+.left .sidebar .menu-item:hover {
+	background: var(--color-light);
+}
+
+.left .sidebar i {
+	font-size: 1.4rem;
+	color: var(--color-gray);
+	margin-left: 2rem;
+	position: relative;
+}
+
+.left .sidebar i .notification-count {
+	background: var(--color-danger);
+	color: white;
+	font-size: 0.7rem;
+	width: fit-content;
+	border-radius: 0.8rem;
+	padding: 0.1rem 0.4rem;
+	position: absolute;
+	top: -0.2rem;
+	right: -0.3rem;
+}
+
+.left .sidebar h3 {
+	margin-left: 1.5rem;
+	font-size: 1rem;
+}
+
+.left .sidebar .active {
+	background: var(--color-light);
+}
+
+.left .sidebar .active i, .left .sidebar .active h3 {
+	color: var(--color-primary);
+}
+
+.left .sidebar .active::before {
+	content: "";
+	display: block;
+	width: 0.5rem;
+	height: 100%;
+	position: absolute;
+	background: var(--color-primary);
+}
+
+.left .sidebar .menu-item:first-child.active {
+	border-top-left-radius: var(--card-border-radius);
+	overflow: hidden;
+}
+
+.left .sidebar .menu-item:last-child.active {
+	border-bottom-left-radius: var(--card-border-radius);
+	overflow: hidden;
+}
+
+.left .btn {
+	min-width: 180px;
+	margin-top: 1rem;
+	width: 100%;
+	text-align: center;
+	padding: 1rem 0;
+}
+
+/* --------------------- NOTIFICATION POPUP -------------- */
+.left .notifications-popup {
+	position: absolute;
+	top: 0;
+	left: 110%;
+	width: 30rem;
+	background: var(--color-white);
+	border-radius: var(--card-border-radius);
+	padding: var(--card-padding);
+	box-shadow: 0 0 2rem hsl(var ( --color-primary), 75%, 60%, 25%);
+	z-index: 8;
+	display: none;
+}
+
+.left .notifications-popup::before {
+	content: "";
+	width: 1.2rem;
+	height: 1.2rem;
+	display: block;
+	background: var(--color-white);
+	position: absolute;
+	left: -0.6rem;
+	transform: rotate(45deg);
+}
+
+.left .notifications-popup>div {
+	display: flex;
+	align-items: start;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.left .notifications-popup small {
+	display: block;
+}
+
+/* ============MIDDLE========== */
+
+/* Chat Room List Styles */
+.chat-room {
+	cursor: pointer;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: var(--color-white);
+	border-bottom: 1px solid var(--color-light);
+	transition: background-color 300ms ease;
+	margin: 5px;
+}
+
+.chat-room:hover {
+	background-color: var(--color-secondary);
+}
+
+.room-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.room-name {
+	font-weight: bold;
+}
+
+.last-message p {
+	font-size: 0.9rem;
+	color: var(--color-gray);
+}
+
+.middle {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+
+.middle .heading {
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+}
+
+.middle .create-room {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.middle .create-room input[type='text'] {
+	flex-grow: 1;
+	padding: 0.5rem;
+	border-radius: var(--border-radius);
+	border: 1px solid var(--color-gray);
+}
+
+.middle .create-room button {
+	padding: 0.5rem 1rem;
+}
+
+.middle .room-list {
+	background: var(--color-white);
+	border-radius: var(--card-border-radius);
+	padding: var(--card-padding);
+	overflow-y: auto;
+	max-height: 60vh;
+}
+
+.middle .chatRoomSection {
+	height: calc(100vh - 70px);
+	overflow-y: auto;
+}
+
+.middle .room {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 0;
+	border-bottom: 1px solid var(--color-light);
+}
+
+.middle .room:last-child {
+	border-bottom: none;
+}
+
+.middle .room-info {
+	font-size: 0.9rem;
+}
+
+.middle .enter-room a {
+	padding: 0.3rem 0.6rem;
+	background-color: var(--color-primary);
+	color: var(--color-white);
+	border-radius: var(--border-radius);
+	text-decoration: none;
+	transition: background-color 300ms ease;
+}
+
+.middle .enter-room a:hover {
+	background-color: var(--color-dark);
+}
+
+.middle .stories {
+	display: flex;
+	justify-content: space-between;
+	height: 12rem;
+	gap: 0.5rem;
+}
+
+.middle .stories .story {
+	padding: var(--card-padding);
+	border-radius: var(--card-border-radius);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
+	font-size: 0.75rem;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.middle .stories .story::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 5rem;
+	background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+	position: absolute;
+	bottom: 0;
+}
+
+.middle .stories .story .name {
+	z-index: 2;
+}
+
+.middle .stories .story:nth-child(1) {
+	background: url("./images/story-1.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(2) {
+	background: url("./images/story-2.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(3) {
+	background: url("./images/story-3.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(4) {
+	background: url("./images/story-4.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(5) {
+	background: url("./images/story-5.jpg") no-repeat center center/cover;
+}
+
+.middle .stories .story:nth-child(6) {
+	background: url("./images/story-6.jpg") no-repeat center center/cover;
+}
+
+.middel .story .profile-photo {
+	width: 2rem;
+	height: 2rem;
+	align-self: start;
+	border: 3px solid var(--color-primary);
+}
+
+/* ------------chatroom--------------*/
+
+
+.middel .chat-Message {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.middel .message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    display: block;
+    max-width: 80%;
+}
+
+.middel .me {
+    background-color: #eff;
+    margin-left: auto; /* 오른쪽 정렬 */
+    text-align: right;
+}
+
+.middel .other {
+    background-color: #fee;
+    margin-right: auto; /* 왼쪽 정렬 */
+}
+
+/* ------------CREATE POST --------------- */
+.middle .create-post {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 1rem;
+	background: var(--color-white);
+	padding: 0.4rem var(--card-padding);
+	border-radius: var(--border-radius);
+}
+
+.middle .create-post input[type='text'] {
+	justify-self: start;
+	width: 100%;
+	padding-left: 1rem;
+	background: transparent;
+	color: var(--color-dark);
+	margin-right: 1rem;
+}
+
+/* -------FEEDS ------------- */
+.middle .feeds .feed {
+	background: var(color-white);
+	border-radius: var(--card-border-radius);
+	padding: var(--card-padding);
+	margin: 1rem 0;
+	font-size: 0.85rem;
+	line-height: 1.5;
+}
+
+.middle .feed .head {
+	display: flex;
+	justify-content: space-between;
+}
+
+.middle .feed .user {
+	display: flex;
+	gap: 1rem;
+}
+
+.middle .feed .photo {
+	border-radius: var(--card-border-radius);
+	overflow: hidden;
+	margin: 0.7rem 0;
+}
+
+.middle .feed .action-buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.4rem;
+	margin: 0.6rem;
+}
+
+.middle .liked-by {
+	display: flex;
+}
+
+.middle .liked-by span {
+	width: 1.4rem;
+	height: 1.4rem;
+	display: block;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 2px solid var(--color-white);
+	margin-left: -0.6rem;
+}
+
+.middle .liked-by span:first-child {
+	margin: 0;
+}
+
+.middle .liked-by p {
+	margin-left: 0.5rem;
+}
+
+/* ================== RIGHT ================ */
+/* Right Column Styles */
+.right {
+	width: 20vw; /* Adjust the width as needed */
+	background: var(--color-white);
+	border-radius: var(--card-border-radius);
+	padding: var(--card-padding);
+	margin-top: 1rem;
+	height: 100vh; /* Full height of the viewport */
+	overflow-y: auto; /* Enables scrolling */
+	position: sticky; /* Sticky position */
+	top: 0; /* Stick to the top */
+	/* ... other styles ... */
+}
+
+.right .heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.right .search-bar {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	background: var(--color-light);
+	border-radius: var(--border-radius);
+	padding: var(--search-padding);
+	margin-bottom: 1rem;
+}
+
+.right .list {
+	overflow-y: auto; /* Allows scrolling within the user list */
+}
+
+.right .user {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	padding: 2.5px;
+	transition: background 300ms;
+	border-radius: var(--border-radius);
+}
+
+.right .user:hover {
+	background: var(--color-secondary);
+}
+
+.right .profile-photo {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.right .message-body h5 {
+	margin-bottom: 0.3rem;
+	font-size: 1rem; /* Adjust font size for better legibility */
+}
+
+.right .message-body p {
+	font-size: 0.8rem;
+	color: var(--color-gray);
+}
+
+.right .action {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+}
+
+
+
+main .container .right {
+	height: max-content;
+	position: sticky;
+	top: var(--sticky-top-right);
+	bottom: 0;
+}
+
+.right .messages {
+	background: var(--color-white);
+	border-radius: var(--card-border-radius);
+	padding: var(--card-padding);
+}
+
+.right .messages .heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.right .messages i {
+	font-size: 1.4rem;
+}
+
+.right .messages .search-bar {
+	display: flex;
+	margin-bottom: 1rem;
+}
+/*	107번줄 nav .search-bar 에서 nav 삭제 */
+/*	110번줄 nav .search-bar input에서 nav 삭제 */
+.right .messages .category {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.right .messages .category h6 {
+	width: 100%;
+	text-align: center;
+	border-bottom: 4px solid car(--color-light);
+	padding-bottom: 0.5rem;
+	font-size: 0.85rem;
+}
+
+.right .messages .category .active {
+	border-color: var(--color-dark);
+}
+
+.right .messages .message-requests {
+	color: var(--color-primary);
+}
+
+.right .messages .message {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	align-items: start;
+}
+
+.right .messages .profile-photo {
+	position: relative;
+	overflow: visible;
+}
+
+.right .profile-photo img {
+	border-radius: 50%;
+}
+
+.right .messages .message:last-child {
+	margin: 0;
+}
+
+.right .messages .message p {
+	font-size: 0.8rem;
+}
+
+.right .messages .message .profile-photo .active {
+	width: 0.8rem;
+	height: 0.8rem;
+	border-radius: 50%;
+	border: 3px solid var(--color-white);
+	background: var(--color-success);
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+/* ============ FRIEND REQUESTS ================ */
+.right .friend-requests {
+	margin-top: 1rem;
+}
+
+.right .friend-requests h4 {
+	color: var(--color-gray);
+	margin: 1rem 0;
+}
+
+.right .request {
+	background: var(--color-white);
+	padding: var(--card-padding);
+	border-radius: var(—card-border-radius);
+	margin-bottom: 0.7rem;
+}
+
+.right .request .info {
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.right .request .action {
+	display: flex;
+	gap: 1rem;
+}
+
+/* 안 읽은 메시지 수 스타일 */
+.unread-count {
+    background: var(--color-danger);
+    color: white;
+    font-size: 0.7rem;
+    width: fit-content;
+    border-radius: 0.8rem;
+    padding: 0.1rem 0.4rem;
+}
+
+.logimg{
+	width: 155px;
+    height: 60px;	
+   
+    
+	
+}
